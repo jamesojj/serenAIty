@@ -1,0 +1,30 @@
+[
+  {
+    "mood": "stressed",
+    "timestamp": "08-11-2025 19:16"
+  },
+  {
+    "mood": "stressed",
+    "timestamp": "2025-11-08T21:31:14.564563"
+  },
+  {
+    "mood": "neutral.",
+    "timestamp": "2025-11-08T21:31:32.060510"
+  },
+  {
+    "mood": "neutral",
+    "timestamp": "2025-11-08T21:31:45.763266"
+  },
+  {
+    "mood": "happy",
+    "timestamp": "2025-11-08T21:31:57.954092"
+  },
+  {
+    "mood": "neutral",
+    "timestamp": "2025-11-08T21:32:10.240069"
+  },
+  {
+    "mood": "neutral",
+    "timestamp": "2025-11-08T21:32:27.706345"
+  }
+]

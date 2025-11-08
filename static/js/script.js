@@ -17,7 +17,7 @@ document.getElementById("send-btn").onclick = async function() {
     const data = await response.json();
     const aiReply = data.reply;
 
-    chatBox.innerHTML += '<p><b>SerenAIty:<b> ${aiReply}</p>';
+    chatBox.innerHTML += `<p><b>SerenAIty:</b> ${aiReply}</p>`;
 
     chatBox.scrollTop = chatBox.scrollHeight;
 };
