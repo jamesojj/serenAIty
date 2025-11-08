@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SerenAIty</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>SerenAIty</h1>
+        <p>Your AI Wellness Companion 🌿</p>
+
+        <div id="chat-box"></div>
+
+        <div class="input-container">
+            <input id="user-input" type="text" placeholder="How are you feeling today?">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
