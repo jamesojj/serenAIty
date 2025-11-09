@@ -41,11 +41,10 @@ def chat():
     stressed_streak = recent_moods.count("stressed")
 
     if stressed_streak >= 2:
-        ai_message = (
-            "I’ve noticed you’ve been feeling stressed recently. "
-            "Would you like a short grounding break or a gentle breathing exercise?"
-        )
-        return jsonify({"reply": ai_message})
+        return jsonify({ 
+            "reply": "breathing_excercise",
+            "mood": detected_mood
+        })
 
     chat_response = client.chat.completions.create(
         model="gpt-4o-mini",
