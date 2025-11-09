@@ -21,3 +21,10 @@ document.getElementById("send-btn").onclick = async function() {
 
     chatBox.scrollTop = chatBox.scrollHeight;
 };
+
+document.getElementById("user-input").addEventListener("keypress", function(event){
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("send-btn").click();
+    }
+});
