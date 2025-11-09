@@ -54,7 +54,7 @@ def chat():
 
     if stressed_streak >= 2:
         return jsonify({ 
-            "reply": "breathing_excercise",
+            "reply": "breathing_exercise",
             "mood": detected_mood
         })
 
