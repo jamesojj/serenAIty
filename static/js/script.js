@@ -1,12 +1,19 @@
 document.getElementById("send-btn").onclick = async function() {
     const inputField = document.getElementById("user-input");
     const input =inputField.value.trim();
-    if (input.trim() === "") return;
+    if (input === "") return;
 
     const chatBox = document.getElementById("chat-box");
 
     chatBox.innerHTML += `<p><b>You:</b> ${input}</p>`;
     inputField.value = "";
+
+    const typingIndicator = document.createElement("p");
+    typingIndicator.id = "typing";
+    typingIndicator.innerHTML = `<i>SerenAIty is typing...</i>`;
+    chatBox.appendChild(typingIndicator);
+
+    chatBox.scrollTop = chatBox.scrollHeight;
 
     const response = await fetch("/chat", {
         method: "POST",
@@ -16,6 +23,8 @@ document.getElementById("send-btn").onclick = async function() {
 
     const data = await response.json();
     const aiReply = data.reply;
+
+    typingIndicator.remove();
 
     chatBox.innerHTML += `<p><b>SerenAIty:</b> ${aiReply}</p>`;
 

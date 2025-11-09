@@ -72,3 +72,9 @@ body {
 #send-btn:hover {
     background: #6b967f;
 }
+
+#typing {
+    opacity: 0.7;
+    font-style: italic;
+    margin-bottom: 8px;
+}
