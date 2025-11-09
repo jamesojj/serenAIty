@@ -64,9 +64,9 @@ git clone <your-repo-url>
 cd serenAIty
 ```
 ### 2. Create a virtual env & install dependencies
-
+```
 pip install -r requirements.txt
-
+```
 ### 3. Add your API key to .env
 ```
 OPENAI_API_KEY=your_key_here
