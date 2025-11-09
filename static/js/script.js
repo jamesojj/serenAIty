@@ -6,6 +6,7 @@ document.getElementById("send-btn").onclick = async function() {
     const chatBox = document.getElementById("chat-box");
 
     chatBox.innerHTML += `<p><b>You:</b> ${input}</p>`;
+    
     inputField.value = "";
 
     const typingIndicator = document.createElement("p");
@@ -23,9 +24,12 @@ document.getElementById("send-btn").onclick = async function() {
 
     const data = await response.json();
     const aiReply = data.reply;
+    const mood = data.mood;
 
     typingIndicator.remove();
 
+    chatBox.innerHTML += `<p class="mood-tag">Detected mood: ${mood}</p>`;
+    
     chatBox.innerHTML += `<p><b>SerenAIty:</b> ${aiReply}</p>`;
 
     chatBox.scrollTop = chatBox.scrollHeight;

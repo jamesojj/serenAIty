@@ -78,3 +78,12 @@ body {
     font-style: italic;
     margin-bottom: 8px;
 }
+
+.mood-tage {
+    font-size: 12px;
+    color: #648375;
+    margin-top: -4px;
+    margin-bottom: 6px;
+    opacity: 0.85;
+    font-style: italic;
+}

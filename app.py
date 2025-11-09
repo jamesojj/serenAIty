@@ -56,7 +56,7 @@ def chat():
     )
 
     ai_message = chat_response.choices[0].message.content
-    return jsonify({"reply": ai_message})
+    return jsonify({"reply": ai_message, "mood": detected_mood})
 
 
 if __name__ == "__main__":
