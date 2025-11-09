@@ -1,0 +1,44 @@
+[
+    {
+    "name": "Whitworth Park",
+    "vibe": "calm",
+    "type": "outdoors",
+    "distance": "8 min walk",
+    "note": "Open park with lots of open space and trees which semms to be great for clearing your head."
+    },
+    {
+    "name": "Manchester Museum ",
+    "vibe": "reflective",
+    "type": "indoors",
+    "distance": "4 min walk",
+    "note": "Quiet exhibit halls perfect for decompressing and thinking slowly."
+    },
+    {
+    "name": "Alan Gilbert Learning Commons (Green Booths Area)",
+    "vibe": "focused",
+    "type": "study",
+    "distance": "2 min walk",
+    "note": "Private booth seating to reset in silence or think quietly."
+    },
+    {
+    "name": "The Whitworth Art Gallery Café",
+    "vibe": "relaxed",
+    "type": "coffee",
+    "distance": "10 min walk",
+    "note": "Light-filled café overlooking the park, its a calming place to sit for a while."
+    },
+    {
+    "name": "Oxford Road Walk (tree-lined route behind University Place)",
+    "vibe": "refresh",
+    "type": "short walk",
+    "distance": "0–5 min",
+    "note": "A short gentle walk route to reset between lectures."
+    },
+    {
+     "name": "HOME Manchester",
+     "vibe": "chill",
+     "type": "indoors",
+    "distance": "12 min walk",
+    "note": "A calm cultural space with soft lighting and open seating. Great for taking a quiet moment while still feeling connected to the city."
+    }
+]

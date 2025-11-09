@@ -44,22 +44,49 @@ def chat():
         "timestamp": datetime.now().isoformat()
     })
 
+    # Keep mood log from growing too far - maintains last 10 entries only
+    mood_log = mood_log[-10:]
+
+
     with open("data/mood_log.json", "w") as f:
         json.dump(mood_log, f, indent=2)
 
     # Senses stress patterns for example if the user is displaying signs of stress in their responses consecutively, SerenAIty takes the intiative and walks the user through a grounding exercise.
 
     recent_moods = [entry["mood"] for entry in mood_log[-3:]]
-    stressed_streak = recent_moods.count("stressed")
+    
+    # Detects if the last two or three moods from user were stress
+    last_two_stressed = len(recent_moods) >= 2 and all(m == "stressed" for m in recent_moods[-2:])
+    last_three_stressed = len(recent_moods) >= 3 and all(m == "stressed" for m in recent_moods[-3:])
 
-    if stressed_streak >= 2:
+    # Tiered agentic responding logic
+
+    # Third level of intervention resulting in change of environment
+    if last_three_stressed:
+        with open("data/places.json", "r") as f:
+            places = json.load(f)
+
+        suggested = places[0]
+
+        return jsonify({
+            "reply": (
+                f"I've come to the realisation you've been stressed for a little while.\n\n"
+                f"Sometimes a change of environment helps.\n\n"
+                f" *{suggested['name']}* ({suggested['distance']}):\n"
+                f"{suggested['note']}\n\n"
+                f"Would you like directions or a walking route suggestion?"
+            ),
+            "mood": detected_mood
+        })
+
+    # Second level of intervention resulting in breathing exercise
+    if last_two_stressed:
         return jsonify({ 
             "reply": "breathing_exercise",
             "mood": detected_mood
         })
 
     # The normal supportive chat mode of SerenAIty 
-
     chat_response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
