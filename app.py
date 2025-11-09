@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import os
 import json
+import random
 from datetime import datetime
 
 load_dotenv() # for secure API key access
@@ -54,7 +55,7 @@ def chat():
     # Senses stress patterns for example if the user is displaying signs of stress in their responses consecutively, SerenAIty takes the intiative and walks the user through a grounding exercise.
 
     recent_moods = [entry["mood"] for entry in mood_log[-3:]]
-    
+
     # Detects if the last two or three moods from user were stress
     last_two_stressed = len(recent_moods) >= 2 and all(m == "stressed" for m in recent_moods[-2:])
     last_three_stressed = len(recent_moods) >= 3 and all(m == "stressed" for m in recent_moods[-3:])
@@ -66,7 +67,7 @@ def chat():
         with open("data/places.json", "r") as f:
             places = json.load(f)
 
-        suggested = places[0]
+        suggested = random.choice(places)
 
         return jsonify({
             "reply": (
