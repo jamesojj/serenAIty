@@ -10,7 +10,11 @@ load_dotenv() # for secure API key access
 
 app = Flask(__name__)
 
+pending_followup = None
+
 client = OpenAI() # Loads securely from .env 
+
+
 
 @app.route("/")
 def home():
@@ -21,6 +25,26 @@ def home():
 def chat():
     # Allows the users message typed to enter the chat interface
     user_message = request.json["message"]
+
+    global pending_followup
+
+    if pending_followup and user_message.lower() in ["yes", "sure", "ok", "okay", "yea", "yeah", "yep", "yh"]:
+        place = pending_followup["place"]
+        pending_followup = None
+
+        maps_url = f"https://www.google.com/maps/search/?api=1&query={place['name'].replace(' ', '+')}+Manchester"
+
+        return jsonify({
+            "reply": (
+                f"Great! <br><br>"
+                f"Here are walking directions to <b>{place['name']}</b>:<br>"
+                f"<a href=\"{maps_url}\" target=\"_blank\">Open in Google Maps</a><br><br>"
+                f"Take your time. Walk slowly. Breathe naturally.<br>"
+                f"I’ll be right here when you get back!"
+
+            ),
+            "mood": "encouraging"
+        })
 
     # KEY FEATURE: Mood Detection Agent permitting autonomous emotional reading of the user. 
     # This is done by reading the emotional tone from the user and classifying it in one word allowing SerenAIty to understand emotions and not just reply.
@@ -69,9 +93,13 @@ def chat():
 
         suggested = random.choice(places)
 
+        # Allowing the Agent to read said instances
+        
+        pending_followup = {"type": "location", "place": suggested}
+
         return jsonify({
             "reply": (
-                f"I've come to the realisation you've been stressed for a little while.\n\n"
+                f"I've noticed you've been stressed for a little while.\n\n"
                 f"Sometimes a change of environment helps.\n\n"
                 f" *{suggested['name']}* ({suggested['distance']}):\n"
                 f"{suggested['note']}\n\n"
@@ -81,7 +109,7 @@ def chat():
         })
 
     # Second level of intervention resulting in breathing exercise
-    if last_two_stressed:
+    elif last_two_stressed:
         return jsonify({ 
             "reply": "breathing_exercise",
             "mood": detected_mood
