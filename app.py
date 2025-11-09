@@ -99,11 +99,10 @@ def chat():
 
         return jsonify({
             "reply": (
-                f"I've noticed you've been stressed for a little while.\n\n"
-                f"Sometimes a change of environment helps.\n\n"
-                f" *{suggested['name']}* ({suggested['distance']}):\n"
-                f"{suggested['note']}\n\n"
-                f"Would you like directions or a walking route suggestion?"
+                f"I've noticed you've been feeling stress for a while lately <br><br>"
+                f"Sometimes a small change of environment can help reset your mind.<br><br>"
+                f"{suggested['note']}<br><br>"
+                f"Would you like me to get <u>walking directions</u>?"
             ),
             "mood": detected_mood
         })

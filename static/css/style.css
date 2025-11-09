@@ -32,6 +32,7 @@ body {
     overflow-y: auto;
     margin-top: 10px;
     padding-right: 6px;
+    scroll-behavior: smooth;
 }
 
 #chat-box p {
@@ -79,6 +80,10 @@ body {
     background: #6b967f;
 }
 
+#send-btn:active {
+    transform: scale(0.96);
+}
+
 #typing {
     opacity: 0.7;
     font-style: italic;
@@ -86,12 +91,13 @@ body {
 }
 
 .mood-tag {
-    font-size: 12px;
-    color: #6d8375;
-    margin-top: -4px;
-    margin-bottom: 6px;       
-    opacity: 0.85;
+    font-size: 11px;
+    color: #5f736a;
+    margin-top: -6px;
+    margin-bottom: 4px;       
+    opacity: 0.75;
     font-style: italic;
+    padding-left: 4px;
 }
 
 #breathing-box {
@@ -100,6 +106,7 @@ body {
     border-radius: 14px;
     text-align: center;
     margin: 12px 0;
+    animation: slideUp 0.45s ease forwards;
 }
 
 #breathing-circle {
@@ -110,6 +117,11 @@ body {
     background: #7aa892;
     animation: breathe 6s infinite ease-in-out;
     opacity: 0.9;
+}
+
+@keyframes slideUp {
+    from {opacity: 0; transform: translateY(20px); }
+    to {opacity: 1; transform: translateY(0); }
 }
 
 /* Animation which imitates real breathing rhythm */
@@ -151,4 +163,13 @@ body {
     font-weight: 350;
     font-style: normal;
     color: #2d3832;
+}
+
+.chat-message {
+    animation: fadeIn 0.35s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
 }

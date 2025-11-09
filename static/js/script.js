@@ -8,8 +8,11 @@ document.getElementById("send-btn").onclick = async function() {
 
     const chatBox = document.getElementById("chat-box");
 
-    // Shows the user's message in the chat UI
-    chatBox.innerHTML += `<p><b>You:</b> ${input}</p>`;
+    // Create and append user message safely
+    const userMsg = document.createElement("p");
+    userMsg.className = "chat-message";
+    userMsg.innerHTML = `<b>You:</b> ${input}`;
+    chatBox.appendChild(userMsg);
     
     inputField.value = ""; // Clears the input area
 
@@ -45,8 +48,11 @@ document.getElementById("send-btn").onclick = async function() {
     // Show detected emotional tone
     chatBox.innerHTML += `<p class="mood-tag">Detected Mood: ${mood}</p>`;
 
-    // Show the Agents response
-    chatBox.innerHTML += `<p><b>SerenAIty:</b> ${aiReply}</p>`;
+    // Create and append AI message safely
+    const aiMsg = document.createElement("p");
+    aiMsg.className = "chat-message";
+    aiMsg.innerHTML = `<b>SerenAIty:</b> ${aiReply}`;
+    chatBox.appendChild(aiMsg);
 
     chatBox.scrollTop = chatBox.scrollHeight;
 };
