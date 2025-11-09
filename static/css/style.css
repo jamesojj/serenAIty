@@ -79,11 +79,11 @@ body {
     margin-bottom: 8px;
 }
 
-.mood-tage {
+.mood-tag {
     font-size: 12px;
-    color: #648375;
+    color: #6d8375;
     margin-top: -4px;
-    margin-bottom: 6px;
+    margin-bottom: 6px;       
     opacity: 0.85;
     font-style: italic;
 }
