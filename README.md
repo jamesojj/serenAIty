@@ -1,4 +1,4 @@
-# SerenAIty
+# SerenAIty(serenity)
 ### *A calm, emotion-aware wellness companion for students.*
 
 ![Status](https://img.shields.io/badge/Status-Prototype-green)
@@ -60,7 +60,7 @@ This helps users **pause → breathe → reset**.
 
 ### 1. Clone the repository
 ```bash
-git clone <your-repo-url>
+git clone <https://github.com/jamesojj/serenAIty>
 cd serenAIty
 ```
 ### 2. Create a virtual env & install dependencies
