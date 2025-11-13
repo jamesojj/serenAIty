@@ -6,10 +6,12 @@ import json
 import random
 from datetime import datetime
 
-load_dotenv() # for secure API key access
+load_dotenv() # # Loads environment variables, including the OpenAI API key.
 
 app = Flask(__name__)
 
+# Used to store whether the app is waiting for a follow-up response
+# (e.g., user agreeing to receive directions).
 pending_followup = None
 
 client = OpenAI() # Loads securely from .env 
@@ -18,7 +20,7 @@ client = OpenAI() # Loads securely from .env
 
 @app.route("/")
 def home():
-    # Renders in the main chat interface UI
+    # Serve the main chat UI page.
     return render_template("index.html")
 
 @app.route("/chat", methods=["POST"])
@@ -26,12 +28,19 @@ def chat():
     # Allows the users message typed to enter the chat interface
     user_message = request.json["message"]
 
+    # Handles each incoming user message:
+    # Detects emotional tone
+    # Tracks mood history
+    # Chooses response mode (normal / breathing / environment suggestion)
+    # Supports follow-up confirmations (e.g., directions)
+
     global pending_followup
 
     if pending_followup and user_message.lower() in ["yes", "sure", "ok", "okay", "yea", "yeah", "yep", "yh"]:
         place = pending_followup["place"]
         pending_followup = None
 
+        # Generates Google Maps walking link
         maps_url = f"https://www.google.com/maps/search/?api=1&query={place['name'].replace(' ', '+')}+Manchester"
 
         return jsonify({

@@ -173,3 +173,22 @@ body {
     from { opacity: 0; transform: translateY(4px); }
     to   { opacity: 1; transform: translateY(0); }
 }
+
+.title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Controls icon size */
+.app-logo {
+    width: 35px;
+    height: 35px;
+    opacity: 0.85;
+    padding-left: 4px;
+}
+
+/* Recolor the SVG using CSS filter (easy method) */
+.app-logo {
+    filter: invert(63%) sepia(10%) saturate(426%) hue-rotate(93deg) brightness(90%) contrast(88%);
+}
